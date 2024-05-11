@@ -1,66 +1,84 @@
-## Foundry
+# Decentralized Auction Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project implements a decentralized auction smart contract using Foundry. It enables users to conduct auctions for various items in a secure and transparent manner on the blockchain. Participants can bid, track auctions, and finalize transactions seamlessly.
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
+## Features
+1. **Secure Auctions:** Conduct auctions securely on the blockchain, ensuring trust and transparency.
+2. **Bidding:** Users can place bids on auctioned items using cryptocurrency.
+3. **Item Management:** Sellers can create and manage multiple auctioned items.
+4. **Automatic Auction End:** Auctions automatically end based on the specified duration.
+5. **Winner Determination:** The contract automatically determines the highest bidder as the winner at the end of the auction.
 
 ## Usage
+1. **Deploy Contract:** Deploy the smart contract to the desired blockchain network.
+2. **Start Auction:** Use the startAuction function to initiate a new auction, specifying the item details, auction duration, and starting price.
+3. **Bid:** Participants can bid on the auctioned items using the bid function, providing the bid amount along with the item ID.
+4. **End Auction:** Once the auction duration ends, the seller can call the endAuction function to finalize the auction and determine the winner.
 
-### Build
 
-```shell
-$ forge build
+## Installation
+
+Follow these steps to set up and deploy the decentralized token exchange smart contract:
+
+1.  Clone the Repository:
+
+```bash
+git clone https://github.com/mishraji874/Auction-Smart-Contract.git
 ```
 
-### Test
+2. Navigate to the Project Directory:
 
-```shell
-$ forge test
+```bash
+cd Auction-Smart-Contract
 ```
 
-### Format
+### Foundry Commands:
 
-```shell
-$ forge fmt
+Here are the Foundry commands for compiling, deploying, interacting with, and testing the smart contracts:
+
+1. Initialize Foundry:
+
+```bash
+forge init
 ```
 
-### Gas Snapshots
+2. Install dependenices:
 
-```shell
-$ forge snapshot
+```bash
+forge install
 ```
 
-### Anvil
+3. Compile smart contracts:
 
-```shell
-$ anvil
+```bash
+forge compile
 ```
 
-### Deploy
+4. Test Contracts:
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```bash
+forge test
 ```
 
-### Cast
+5. Make the ```.env``` file and add your SEPOLIA_RPC_URL, PRIVATE_KEY and your ETHERSCAN_API_KEY for verification of the deployed contract.
 
-```shell
-$ cast <subcommand>
-```
+6. Deploy Smart Contract:
 
-### Help
+    If deploying to the test network run the following command:
+    ```bash
+    forge script script/DeployAuction.s.sol
+    ```
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+    If deploying to the Sepolia test network run the following command:
+    ```bash
+    forge script script/DeployAuction.s.sol --rpc-url ${SEPOLIA_RPC_URL} --private-key ${PRIVATE_KEY}
+    ```
+
+    And, for verification from the Etherscan about the deployed contract run the following command:
+    ```bash
+    forge script script/DeployAuction.s.sol --rpc-url ${SEPOLIA_RPC_URL} --private-key ${PRIVATE_KEY} --verify ${ETHERSCAN_API_KEY} --broadcast
+    ```
+
+## License:
+
+This project is licensed under the MIT License.
